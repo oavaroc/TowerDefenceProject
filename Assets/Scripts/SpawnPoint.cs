@@ -13,15 +13,21 @@ public class SpawnPoint : MonoBehaviour
         LevelEnemyConfiguration config = _levelEnemyConfigurations.Find(x => x._levelNumber == level);
         if (config == null)
         {
-            Debug.Log("Nothing for this level");
+            Debug.Log("You Win");
         }
         else
         {
-            for (int i = 0; i < config._enemyType.Count; i++)
-            {
-                SpawnManager.Instance.StartSpawning(config._enemyType[i], config._spawnAmount[i], config._spawnRate[i], transform.position);
-            }
-
+            StartCoroutine(StartSpawnRoutine(config));
         }
+    }
+
+    IEnumerator StartSpawnRoutine(LevelEnemyConfiguration config)
+    {
+        for (int i = 0; i < config._enemyType.Count; i++)
+        {
+            SpawnManager.Instance.StartSpawning(config._enemyType[i], config._spawnAmount[i], config._spawnRate[i], transform.position);
+            yield return new WaitForSeconds(config._spawnRate[i]* config._spawnAmount[i]);
+        }
+
     }
 }

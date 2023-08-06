@@ -1,0 +1,34 @@
+{
+    "name": "PlayerInputActions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "c18723e7-3204-4d37-b436-5cce40613c59",
+            "actions": [
+                {
+                    "name": "TowerPlacement",
+                    "type": "Button",
+                    "id": "faf82cc2-bc35-46f2-b89a-0ee99449ba5e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a9c02ed8-9735-4925-b2e6-67aa87b975fc",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TowerPlacement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

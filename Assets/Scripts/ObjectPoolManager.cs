@@ -42,7 +42,7 @@ public class ObjectPoolManager : MonoSingleton<ObjectPoolManager>
 
     private GameObject SpawnEnemy(EnemyTypeEnum _enemyType)
     {
-        GameObject enemy = Instantiate(_enemy.Find(x=>x.enumValue==_enemyType).gameObject, WaypointManager.Instance.GetSpawnPoint(_enemyType).position, Quaternion.identity, transform);
+        GameObject enemy = Instantiate(_enemy.Find(x=>x.enumValue==_enemyType).gameObject, transform.position, Quaternion.identity, transform);
         enemy.SetActive(false);
         _enemies[_enemyType].Add(enemy);
         return enemy;

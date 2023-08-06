@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Destination
   - Start
+  - Platform
+  - Occupied
   layers:
   - Default
   - TransparentFX
@@ -13,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - TowerPlatform
   - 
   - 
   - 
