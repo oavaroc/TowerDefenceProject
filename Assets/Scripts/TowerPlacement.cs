@@ -18,7 +18,7 @@ public class TowerPlacement : MonoBehaviour
     {
         _input = new PlayerInputActions();
         _input.Player.Enable();
-        _input.Player.TowerPlacement.started += TowerPlacement_started;
+        //_input.Player.TowerPlacement.started += TowerPlacement_started;
         _input.Player.TowerPlacement.canceled += TowerPlacement_canceled;
     }
 
@@ -49,7 +49,7 @@ public class TowerPlacement : MonoBehaviour
         }
         _placingTower = false;
     }
-
+    /*
     private void TowerPlacement_started(InputAction.CallbackContext obj)
     {
         RaycastHit hit;
@@ -60,7 +60,7 @@ public class TowerPlacement : MonoBehaviour
         _towerPlacement = Instantiate(_tower,hit.point,_tower.transform.rotation);
 
         _placingTower = true;
-    }
+    }*/
 
     // Update is called once per frame
     void Update()
@@ -75,7 +75,8 @@ public class TowerPlacement : MonoBehaviour
             {
                 if (_towerPlacement != null)
                 {
-                    _towerPlacement.transform.position = tp.GetPlacementPoint().position;
+                    _towerPlacement.transform.position = hit.point;
+                    //_towerPlacement.transform.position = tp.GetPlacementPoint().position;
                     _towerPlacement.GetComponentInChildren<MeshRenderer>().material.color = Color.green;
                 }
             }
@@ -89,5 +90,18 @@ public class TowerPlacement : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void CreateRocket()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());//.ScreenPointToRay(new Vector3(Mouse.current.position.x, Mouse.current.position.y, 0));
+        if (!Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << 6))
+            return;
+
+        _towerPlacement = Instantiate(_tower, hit.point, _tower.transform.rotation);
+
+        _placingTower = true;
+
     }
 }
